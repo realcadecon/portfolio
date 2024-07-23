@@ -17,28 +17,20 @@ function App() {
     stateMachines: "State Machine 1",
     autoplay: true,
   })
-  
-  // const { RiveComponent, rive } = useRive({
-  //   src: Desk,
-  //   artboard: "Full Desk",
-  //   stateMachines: "SM_LEFT",
-  //   autoplay: true,
-  // })
 
-  
+
+
 
   const [isHovered, setIsHovered] = useState(false);
 
-  // const onHoverLeftInput = useStateMachineInput(rive, "SM_LEFT", ON_HOVER_LEFT_MONITOR);
-  // const onHoverLeftInput = useStateMachineInput(rive, "State Machine 1", Input_HOVER);
-  
-  function onMouseEnter() {
+
+  function Up_LMonitor() {
     // onHoverLeftInput.value = true;
     rive.setBooleanStateAtPath(Input_HOVER, true, "LEFT")
     setIsHovered(true);
   }
-  
-  function onMouseLeave() {
+
+  function Down_LMonitor() {
     // onHoverLeftInput.value = false;
     rive.setBooleanStateAtPath(Input_HOVER, false, "LEFT")
     setIsHovered(false);
@@ -55,7 +47,7 @@ function App() {
     var tl_name = gsap.timeline();
     tl_name
       .to(".firstname", { x: 200, duration: 1, ease: 'back.inOut' })
-      .to(".lastname", { x: -200, duration: 1, ease: 'back.inOut'}, "0");
+      .to(".lastname", { x: -200, duration: 1, ease: 'back.inOut' }, "0");
 
   }
 
@@ -70,10 +62,18 @@ function App() {
       <RiveComponent
         role="img"
         aria-label="Desk Animation"
-        style={{height:500, zIndex:50, width:500}}
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
+        style={{ height: 500, zIndex: 0, position: 'absolute', top: '40%', left: '3%', width: '41%' }}
       />
+      <a className='absolute top-[48.5%] left-[3%] h-[9.5%] w-[16.5%] bg-red-800 bg-opacity-50'
+        onMouseEnter={Up_LMonitor}
+        onMouseLeave={Down_LMonitor}>
+        Left Monitor
+      </a>
+      <a className='absolute top-[48.5%] left-[19%] h-[9.5%] w-[16.5%] bg-green-800 bg-opacity-50'
+        onMouseEnter={Up_LMonitor}
+        onMouseLeave={Down_LMonitor}>
+        Right Monitor
+      </a>
       <div className='box bg-green-700 mx-auto mt-10 h-10 w-10 text-green-400 text-center font-roboto' onMouseOver={animateBox}>test</div>
       {/* floor */}
       <div className='bg-green-900 w-5/6 mx-auto h-1'></div>
