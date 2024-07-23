@@ -1,43 +1,46 @@
 import gsap from 'gsap';
-import { useRive, useStateMachineInput } from '@rive-app/react-canvas'
+import { useRive, useStateMachineInput, setBooleanStateAtPath } from '@rive-app/react-canvas'
 import { useState } from 'react';
 
-import Desk from '/portfolio2.riv'
+import Desk from './assets/portfolio2.riv'
 
 
 
 
 function App() {
 
-  const ON_HOVER_LEFT_MONITOR = 'Hover_LEFT';
+  const Input_HOVER = 'Hover';
 
-  // const { RiveComponent, rive } = useRive({
-  //   src: Desk,
-  //   artboard: ["Full Desk", "LEFT"],
-  //   stateMachines: ["State Machine 1", "SM_LEFT"],
-  //   autoplay: true,
-  // })
   const { RiveComponent, rive } = useRive({
     src: Desk,
-    artboard: ["Full Desk"],
-    stateMachines: ["State Machine 1"],
+    artboard: "Full Desk",
+    stateMachines: "State Machine 1",
     autoplay: true,
   })
+  
+  // const { RiveComponent, rive } = useRive({
+  //   src: Desk,
+  //   artboard: "Full Desk",
+  //   stateMachines: "SM_LEFT",
+  //   autoplay: true,
+  // })
 
   
 
   const [isHovered, setIsHovered] = useState(false);
 
   // const onHoverLeftInput = useStateMachineInput(rive, "SM_LEFT", ON_HOVER_LEFT_MONITOR);
-  const onHoverLeftInput = useStateMachineInput(rive, "State Machine 1", ON_HOVER_LEFT_MONITOR);
-
+  // const onHoverLeftInput = useStateMachineInput(rive, "State Machine 1", Input_HOVER);
+  
   function onMouseEnter() {
-    onHoverLeftInput.value = true;
+    // onHoverLeftInput.value = true;
+    rive.setBooleanStateAtPath(Input_HOVER, true, "LEFT")
     setIsHovered(true);
   }
-
+  
   function onMouseLeave() {
-    onHoverLeftInput.value = false;
+    // onHoverLeftInput.value = false;
+    rive.setBooleanStateAtPath(Input_HOVER, false, "LEFT")
     setIsHovered(false);
   }
 
