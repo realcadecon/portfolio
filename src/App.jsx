@@ -62,22 +62,24 @@ function App() {
           <div className='lastname'>CONNER</div>
         </div>
       </div>
-      <div className='pb-20'>
-        <RiveComponent
-          role="img"
-          aria-label="Desk Animation"
-          className='fixed bottom-0 left-[5%] w-[35%]'
-        />
-        <a className='fixed top-[48.5%] left-[5%] aspect-video bg-red-800 bg-opacity-50'
-          onMouseEnter={Up_LMonitor}
-          onMouseLeave={Down_LMonitor}>
-          Left Monitor
-        </a>
-        <a className='fixed top-[48.5%] left-[19%] h-[9.5vw] w-[16.5%] bg-green-800 bg-opacity-50'
-          onMouseEnter={Up_LMonitor}
-          onMouseLeave={Down_LMonitor}>
-          Right Monitor
-        </a>
+      <div className='container w-[25%] ml-auto mr-auto relative block'>
+        <div className='canvas-wrapper relative left-[-105%]'>
+          <RiveComponent
+            role="img"
+            aria-label="Desk Animation"
+            className='relative bottom-0 left-[5%] h-[35%]'
+          />
+          <a className='absolute top-[13%] left-[5%] h-[25%] w-[38%] bg-blue-800 bg-opacity-50'
+            onMouseEnter={Up_LMonitor}
+            onMouseLeave={Down_LMonitor}>
+            Left Monitor
+          </a>
+          <a className='absolute top-[13%] left-[46%] h-[25%] w-[38%] bg-green-800 bg-opacity-50'
+            onMouseEnter={Up_LMonitor}
+            onMouseLeave={Down_LMonitor}>
+            Right Monitor
+          </a>
+        </div>
         <div className='box bg-green-700 mx-auto h-10 w-10 text-green-400 text-center font-roboto' onMouseOver={animateBox}>test</div>
         <div className='fixed bg-green-900 w-5/6 bottom-0 h-1'></div>
       </div>
