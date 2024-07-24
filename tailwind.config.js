@@ -8,7 +8,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        "display": ["Chakra Petch"],
+        "chak_pet_display": ["Chakra Petch"],
+        "anton_display": ["Anton"],
         "roboto": ["Roboto"],
       }
     },

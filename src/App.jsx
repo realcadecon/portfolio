@@ -9,7 +9,8 @@ import Desk from './assets/portfolio2.riv'
 
 function App() {
 
-  const Input_HOVER = 'Hover';
+  const Input_HOVER_L = 'HoverL';
+  const Input_HOVER_R = 'HoverR';
 
   const { RiveComponent, rive } = useRive({
     src: Desk,
@@ -29,13 +30,25 @@ function App() {
 
   function Up_LMonitor() {
     // onHoverLeftInput.value = true;
-    rive.setBooleanStateAtPath(Input_HOVER, true, "LEFT")
+    rive.setBooleanStateAtPath(Input_HOVER_L, true, "LEFT")
     setIsHovered(true);
   }
 
   function Down_LMonitor() {
     // onHoverLeftInput.value = false;
-    rive.setBooleanStateAtPath(Input_HOVER, false, "LEFT")
+    rive.setBooleanStateAtPath(Input_HOVER_L, false, "LEFT")
+    setIsHovered(false);
+  }
+
+  function Up_RMonitor() {
+    // onHoverLeftInput.value = true;
+    rive.setBooleanStateAtPath(Input_HOVER_R, true, "RIGHT")
+    setIsHovered(true);
+  }
+
+  function Down_RMonitor() {
+    // onHoverLeftInput.value = false;
+    rive.setBooleanStateAtPath(Input_HOVER_R, false, "RIGHT")
     setIsHovered(false);
   }
 
@@ -57,7 +70,7 @@ function App() {
   return (
     <div>
       <div className='ml-auto mr-auto -z-50'>
-        <div className='relative text-center text-green-500 text-[20vw] tracking-tightest leading-none font-display font-extrabold' onMouseOver={animateName}>
+        <div className='relative text-center text-green-600 text-[20vw] leading-none font-anton_display font-extrabold' onMouseOver={animateName}>
           <div className='firstname'>CADE</div>
           <div className='lastname'>CONNER</div>
         </div>
@@ -70,15 +83,13 @@ function App() {
               aria-label="Desk Animation"
               className='relative w-[120%]'
             />
-            <a className='absolute top-[13%] left-[2%] h-[25%] w-[42%] bg-blue-800 bg-opacity-50'
+            <a className='absolute top-[13%] left-[2%] h-[25%] w-[42%] bg-blue-800 bg-opacity-0'
               onMouseEnter={Up_LMonitor}
               onMouseLeave={Down_LMonitor}>
-              Left Monitor
             </a>
-            <a className='absolute top-[13%] left-[50%] h-[25%] w-[42%] bg-green-800 bg-opacity-50'
-              onMouseEnter={Up_LMonitor}
-              onMouseLeave={Down_LMonitor}>
-              Right Monitor
+            <a className='absolute top-[13%] left-[50%] h-[25%] w-[42%] bg-green-800 bg-opacity-0'
+              onMouseEnter={Up_RMonitor}
+              onMouseLeave={Down_RMonitor}>
             </a>
             <div className='fixed bg-green-900 w-5/6 bottom-[13vh] -z-10 h-1'></div>
           </div>
