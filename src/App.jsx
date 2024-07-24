@@ -1,5 +1,5 @@
 import gsap from 'gsap';
-import { useRive, useStateMachineInput, setBooleanStateAtPath } from '@rive-app/react-canvas'
+import { useRive, setBooleanStateAtPath } from '@rive-app/react-canvas'
 import { useState } from 'react';
 
 import Desk from './assets/portfolio2.riv'
@@ -16,7 +16,10 @@ function App() {
     artboard: "Full Desk",
     stateMachines: "State Machine 1",
     autoplay: true,
-  })
+  }, {
+    fitCanvasToArtboardHeight: true,
+  }
+  )
 
 
 
@@ -53,30 +56,31 @@ function App() {
 
   return (
     <div>
-      <div className='absolute top-[30vh] left-1/3 -z-50'>
+      <div className='absolute bottom-[30%] left-1/3 -z-50'>
         <div className='name text-left text-green-500 text-9xl font-display font-extrabold' onMouseOver={animateName}>
           <div className='firstname'>CADE</div>
           <div className='lastname'>CONNER</div>
         </div>
       </div>
-      <RiveComponent
-        role="img"
-        aria-label="Desk Animation"
-        style={{ height: 500, zIndex: 0, position: 'absolute', top: '40%', left: '3%', width: '41%' }}
-      />
-      <a className='absolute top-[48.5%] left-[3%] h-[9.5%] w-[16.5%] bg-red-800 bg-opacity-50'
-        onMouseEnter={Up_LMonitor}
-        onMouseLeave={Down_LMonitor}>
-        Left Monitor
-      </a>
-      <a className='absolute top-[48.5%] left-[19%] h-[9.5%] w-[16.5%] bg-green-800 bg-opacity-50'
-        onMouseEnter={Up_LMonitor}
-        onMouseLeave={Down_LMonitor}>
-        Right Monitor
-      </a>
-      <div className='box bg-green-700 mx-auto mt-10 h-10 w-10 text-green-400 text-center font-roboto' onMouseOver={animateBox}>test</div>
-      {/* floor */}
-      <div className='bg-green-900 w-5/6 mx-auto h-1'></div>
+      <div className='pb-20'>
+        <RiveComponent
+          role="img"
+          aria-label="Desk Animation"
+          className='fixed bottom-0 left-[5%] w-[35%]'
+        />
+        <a className='fixed top-[48.5%] left-[5%] aspect-video bg-red-800 bg-opacity-50'
+          onMouseEnter={Up_LMonitor}
+          onMouseLeave={Down_LMonitor}>
+          Left Monitor
+        </a>
+        <a className='fixed top-[48.5%] left-[19%] h-[9.5vw] w-[16.5%] bg-green-800 bg-opacity-50'
+          onMouseEnter={Up_LMonitor}
+          onMouseLeave={Down_LMonitor}>
+          Right Monitor
+        </a>
+        <div className='box bg-green-700 mx-auto h-10 w-10 text-green-400 text-center font-roboto' onMouseOver={animateBox}>test</div>
+        <div className='fixed bg-green-900 w-5/6 bottom-0 h-1'></div>
+      </div>
     </div>
   )
 }
