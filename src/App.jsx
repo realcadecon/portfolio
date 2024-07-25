@@ -3,6 +3,7 @@ import { useRive, setBooleanStateAtPath } from '@rive-app/react-canvas'
 import { useState } from 'react';
 
 import Desk from './assets/portfolio2.riv'
+import { WorkStationAnim } from './components/WorkStationAnim';
 
 
 
@@ -12,6 +13,7 @@ function App() {
   const Input_HOVER_L = 'HoverL';
   const Input_HOVER_R = 'HoverR';
 
+  
   const { RiveComponent, rive } = useRive({
     src: Desk,
     artboard: "Full Desk",
@@ -20,8 +22,7 @@ function App() {
   }, {
     fitCanvasToArtboardHeight: true,
   }
-  )
-
+)
 
 
 
@@ -93,6 +94,7 @@ function App() {
             </a>
             <div className='fixed bg-green-900 w-5/6 bottom-[13vh] -z-10 h-1'></div>
           </div>
+          <WorkStationAnim/>
         </div>
       </div>
     </div>
